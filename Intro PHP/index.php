@@ -34,24 +34,28 @@
 // echo "<br>";
 // var_dump($booleano);
 
-echo somar(34,90);
+echo somar(34, 90);
 echo "<br>";
-echo subtrair(12,56);
+echo subtrair(12, 56);
 echo "<br>";
-echo somar("-1",29);
+echo somar("-1", 29);
 
-function somar($num1,$num2){
+function somar($num1, $num2)
+{
     return $num1 + $num2;
 }
 
-function subtrair($num1,$num2){
+function subtrair($num1, $num2)
+{
     return $num1 - $num2;
 }
 
-function multiplicacao($num1,$num2){
+function multiplicacao($num1, $num2)
+{
     return $num1 * $num2;
 }
 
-function dividir($num1,$num2){
+function dividir($num1, $num2)
+{
     return $num1 / $num2;
 }
