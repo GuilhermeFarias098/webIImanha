@@ -24,7 +24,7 @@ switch ($_GET["temperature"]) {
     default:
         $_SESSION["msg_error"] = "A temperatura para conversão é inválida!!!";
 }
-header("location:index");
+header("location:index.php");
 
 // Funções de conversão
 function toFahrenheit($celsius)

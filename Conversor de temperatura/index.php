@@ -19,8 +19,16 @@
             <div class="alert alert-warning">
                 <?= $_SESSION["msg_error"] ?>
             </div>
-        <?php endif; unset($_SESSION["msg_error"]) ?>
-        
+        <?php endif;
+        unset($_SESSION["msg_error"]) ?>
+        <?php
+        if (!empty($_SESSION["msg_value"])) :
+        ?>
+            <div class="alert alert-info">
+                <?= $_SESSION["msg_value"] ?>
+            </div>
+        <?php endif;
+        unset($_SESSION["msg_value"]) ?>
         <form action="conversor.php" method="get">
             <section class="row">
                 <article class="col-12 col-md-6">
@@ -32,7 +40,7 @@
                 <article class="col-12 col-md-6">
                     <div class="form-check">
                         <label for="txtFahrenheit" class="form-check-label">Fahrenheit</label>
-                        <input type="radio" name="temperature" id="txtFahrenheit" class="form-check-input" value="Fahrenheit">
+                        <input type="radio" name="temperature" id="txtFahrenheit" class="form-check-input" value="Fahrenheit" checked>
                     </div>
                     <div class="form-check">
                         <label for="txtKelvin" class="form-check-label">Kelvin</label>
