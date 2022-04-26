@@ -1,0 +1,17 @@
+{
+    "name": "andersonchoren/sale_ticket",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "APP\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anderson Choren",
+            "email": "andersonchoren@gmail.com"
+        }
+    ],
+    "require": {}
+}
