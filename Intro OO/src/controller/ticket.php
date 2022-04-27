@@ -1,6 +1,7 @@
 <?php
-
 namespace APP\Controller;
+
+require_once "./vendor/autoload.php";
 
 use APP\Model\Ticket;
 
@@ -14,4 +15,4 @@ $id = (int) floor(10);
 $seat = $_POST["seat"];
 $price = $_POST["price"];
 
-$ticket_obj = Ticket();
+$ticket_obj = new Ticket();
