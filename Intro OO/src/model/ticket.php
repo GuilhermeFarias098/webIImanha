@@ -1,4 +1,5 @@
 <?php
+
 namespace APP\Model;
 
 class Ticket
@@ -10,6 +11,13 @@ class Ticket
     private bool $free;
 
     // Methods
+    /**
+     * Construtor de objetos Ingresso
+     *
+     * @param integer $id Código único do ingresso
+     * @param float $price Valor sem desconto
+     * @param string $seat Número do assento
+     */
     public function __construct(int $id, float $price, string $seat)
     {
         $this->id = $id;
@@ -18,7 +26,33 @@ class Ticket
         $this->free = true;
     }
 
-    public function saleTicket(string $seat, int $typeOfUser): string
+    // Getter
+    public function __get($attribute)
+    {
+        return $this->$attribute;
+    }
+
+    // Setter
+    public function __set($attribute, $value)
+    {
+        if (!empty($value)) {
+            $this->$attribute = $value;
+        }
+    }
+
+    // Getter controlado
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    // Seeter controlado
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    public function saleTicket(int $typeOfUser): string
     {
         if (!$this->free) {
             return "Assento não disponível";
@@ -30,16 +64,14 @@ class Ticket
         return "Obrigado por adquirir o assento $this->seat. O total do ingresso é R$ $salePrice";
     }
 
-    public function calculateDiscount(int $typeOfUser): float
+    private function calculateDiscount(int $typeOfUser): float
     {
         switch ($typeOfUser) {
-            case 1: // Standard User
-                return $this->price;
             case 2: // Student User
                 return $this->price * 0.5;
             case 3: // VIP User
                 return $this->price * 0.7;
-            default:
+            default: // Qualquer outra coisa
                 return 0;
         }
     }

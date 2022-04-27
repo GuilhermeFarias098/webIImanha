@@ -1,7 +1,8 @@
 <?php
+
 namespace APP\Controller;
 
-require_once "./vendor/autoload.php";
+require_once "../../vendor/autoload.php";
 
 use APP\Model\Ticket;
 
@@ -14,5 +15,9 @@ if (!$_POST) {
 $id = (int) floor(10);
 $seat = $_POST["seat"];
 $price = $_POST["price"];
+$typeOfUser = $_POST["typeOfUser"];
 
-$ticket_obj = new Ticket();
+$ticket_obj = new Ticket($id, $price, $seat);
+$result = $ticket_obj->saleTicket($typeOfUser);
+$_SESSION["msg_success"] = $result;
+header("location:../view/message.php");
