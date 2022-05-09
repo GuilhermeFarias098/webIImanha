@@ -2,6 +2,8 @@
 
 namespace APP\Controller;
 
+use APP\Model\DAO\UserDAO;
+use APP\Model\User;
 use APP\Model\Validation;
 
 require_once "../../vendor/autoload.php";
@@ -9,7 +11,7 @@ require_once "../../vendor/autoload.php";
 session_start();
 if (empty($_POST)) {
     $_SESSION["msg_error"] = "Requisição inválida";
-    header("../View/form_user_add.php");
+    header("../View/Message.php");
 }
 
 $error = array();
@@ -38,7 +40,16 @@ if (!Validation::validatePassword($password)) {
 redirect($error);
 
 // Modelo do User
+$objUser = new User($login, password_hash($password, PASSWORD_DEFAULT));
 
+$result = UserDAO::insert($objUser);
+
+if ($result != 0) {
+    $_SESSION["msg_success"] = "Usuário cadastrado com sucesso!!!";
+} else {
+    $_SESSION["msg_error"] = "Lamento, não foi possível cadastrar o usuário!!!";
+}
+header("location:../View/Message.php");
 function redirect(array $error, string $location = "../View/Message.php")
 {
     if (count($error) > 0) {
