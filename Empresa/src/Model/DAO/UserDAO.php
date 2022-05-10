@@ -18,4 +18,13 @@ class UserDAO
         $stmt->bindParam(2, $user->password, PDO::PARAM_STR);
         return $stmt->execute();
     }
+
+    public static function authentication(User $user)
+    {
+        self::$connection = Connection::getConnection();
+        $login = $user->login;
+        $sql = "select * from usuario where login = '$login'";
+        $stmt = self::$connection->query($sql);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
