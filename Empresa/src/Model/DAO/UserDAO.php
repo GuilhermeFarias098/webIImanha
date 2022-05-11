@@ -13,7 +13,7 @@ class UserDAO
     public static function insert(User $user)
     {
         self::$connection = Connection::getConnection();
-        $stmt = self::$connection->prepare("insert into usuario(login,senha) values (?,?)");
+        $stmt = self::$connection->prepare("insert into usuario(login,password) values (?,?)");
         $stmt->bindParam(1, $user->login, PDO::PARAM_STR);
         $stmt->bindParam(2, $user->password, PDO::PARAM_STR);
         return $stmt->execute();
@@ -26,5 +26,23 @@ class UserDAO
         $sql = "select * from usuario where login = '$login'";
         $stmt = self::$connection->query($sql);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function update(User $user)
+    {
+        self::$connection = Connection::getConnection();
+        $stmt = self::$connection->prepare("update usuario set login = ?, password= ? where idUsuario=?");
+        $stmt->bindParam(1, $user->login, PDO::PARAM_STR);
+        $stmt->bindParam(2, $user->password, PDO::PARAM_STR);
+        $stmt->bindParam(3, $user->id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public static function delete(int $id)
+    {
+        self::$connection = Connection::getConnection();
+        $stmt = self::$connection->prepare("delete from usuario where idUsuario = ?");
+        $stmt->bindParam(1, $id, PDO::PARAM_INT);
+        return $stmt->execute();
     }
 }
