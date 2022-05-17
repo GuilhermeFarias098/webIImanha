@@ -45,4 +45,11 @@ class UserDAO
         $stmt->bindParam(1, $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
+
+    public static function findAll()
+    {
+        self::$connection = Connection::getConnection();
+        $stmt = self::$connection->query(query: "select idUsuario,login from usuario", fetchMode: PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
 }

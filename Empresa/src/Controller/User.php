@@ -32,6 +32,9 @@ switch ($_GET["operation"]) {
     case "remove":
         deleteUser();
         break;
+    case "listall":
+        findAllUsers();
+        break;
     default:
         echo "Opção inválida!!!";
 }
@@ -178,6 +181,12 @@ function deleteUser()
         $_SESSION["msg_error"] = "Lamento, não foi possível remover o usuário em questão";
     }
     header("location:../View/Message.php");
+}
+function findAllUsers()
+{
+    $users = UserDAO::findAll();
+    $_SESSION["users_data"] = $users;
+    header("location:../View/ListUsers.php");
 }
 function redirect(array $error, string $location = "../View/Message.php")
 {
