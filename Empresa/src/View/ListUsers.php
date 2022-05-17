@@ -52,6 +52,7 @@
                                 <a href="../Controller/User.php?operation=remove&codigo=<?= $user["idUsuario"] ?>" class="btn btn-danger">
                                     Excluir
                                 </a>
+                                <a href="../Controller/User.php?operation=find&codigo=<?= $user["idUsuario"] ?>" class="btn btn-warning">Editar</a>
                             </td>
                         </tr>
                     <?php endforeach;

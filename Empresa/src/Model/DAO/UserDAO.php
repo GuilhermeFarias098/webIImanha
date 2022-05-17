@@ -52,4 +52,11 @@ class UserDAO
         $stmt = self::$connection->query(query: "select idUsuario,login from usuario", fetchMode: PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
+
+    public static function findById(int $id)
+    {
+        self::$connection = Connection::getConnection();
+        $stmt = self::$connection->query("select idUsuario,login from usuario where idUsuario='$id'");
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

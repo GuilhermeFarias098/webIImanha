@@ -35,6 +35,9 @@ switch ($_GET["operation"]) {
     case "listall":
         findAllUsers();
         break;
+    case "find":
+        findUserById();
+        break;
     default:
         echo "Opção inválida!!!";
 }
@@ -187,6 +190,27 @@ function findAllUsers()
     $users = UserDAO::findAll();
     $_SESSION["users_data"] = $users;
     header("location:../View/ListUsers.php");
+}
+
+function findUserById()
+{
+    $error = array();
+
+    if (empty($_GET["codigo"])) {
+        array_push($error, "Código do usuário não informado!!!");
+    }
+    redirect($error);
+
+    $id = $_GET["codigo"];
+
+    if (!Validation::validateId($id)) {
+        array_push($error, "O código do usuário deve ser numérico!!!");
+    }
+    redirect($error);
+
+    $user = UserDAO::findById($id);
+    $_SESSION["user_data"] = $user;
+    header("location:../View/Form_UpdateUser.php");
 }
 function redirect(array $error, string $location = "../View/Message.php")
 {
