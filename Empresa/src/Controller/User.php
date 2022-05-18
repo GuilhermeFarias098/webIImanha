@@ -102,7 +102,7 @@ function login()
 
     $data = UserDAO::authentication($user);
     if ($data) {
-        if (password_verify($password, $data["password"])) {
+        if (password_verify($password, $data["senha"])) {
             $_SESSION["userData"] = $user;
             header("location:../View/Dashboard.php");
         } else {

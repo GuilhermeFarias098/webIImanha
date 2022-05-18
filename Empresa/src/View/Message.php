@@ -24,7 +24,7 @@
                     <p><?= $_SESSION["msg_success"] ?></p>
                 </div>
                 <div class="card-footer">
-                    <a href="../../index.html" class="text-white">Voltar</a>
+                    <a href="Dashboard.php" class="text-white">Voltar</a>
                 </div>
             </div>
         <?php
@@ -57,9 +57,9 @@
                         <?php
                         foreach ($_SESSION["msg_verify_error"] as $msg) :
                         ?>
-                           <li>
-                               <?= $msg ?>
-                           </li> 
+                            <li>
+                                <?= $msg ?>
+                            </li>
                         <?php
                         endforeach;
                         unset($_SESSION["msg_verify_error"]);

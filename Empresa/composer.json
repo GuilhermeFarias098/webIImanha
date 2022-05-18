@@ -4,7 +4,8 @@
       "APP\\": "src/"
     },
     "files": [
-      "Config.php"
+      "Config.php",
+      "AuthVerify.php"
     ]
   }
 }

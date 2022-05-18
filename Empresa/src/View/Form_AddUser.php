@@ -9,7 +9,7 @@ authVerify();
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formulário de atualização de usuário</title>
+  <title>Formulário de cadastro de usuário</title>
   <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 </head>
@@ -27,7 +27,7 @@ authVerify();
             <a class="nav-link" href="Dashboard.php">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Form_AddUser.php">Novo usuário</a>
+            <a class="nav-link" href="#">Novo usuário</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../Controller/User.php?operation=listall">Listar usuários</a>
@@ -37,15 +37,14 @@ authVerify();
     </div>
   </nav>
   <main class="container">
-    <form action="../Controller/User.php?operation=update" method="post">
-      <input type="hidden" name="id" value="<?= $_SESSION["user_data"]["idUsuario"] ?>" />
+    <form action="../Controller/User.php?operation=insert" method="post">
       <section class="row">
         <article class="col-12 col-md-6">
           <div class="mb-3">
             <label for="login" class="form-label">
               <span class="text-danger">*</span>Login
             </label>
-            <input type="text" id="login" name="login" class="form-control" required minlength="8" value="<?= $_SESSION["user_data"]["login"] ?>" />
+            <input type="text" id="login" name="login" class="form-control" required minlength="8" />
           </div>
         </article>
         <article class="col-12 col-md-6">

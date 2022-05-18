@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+require_once "../../vendor/autoload.php";
+authVerify();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -22,7 +25,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="Form_AddUser.html">Novo usuário</a>
+                        <a class="nav-link" href="Dashboard.php">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Form_AddUser.php">Novo usuário</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../Controller/User.php?operation=listall">Listar usuários</a>
